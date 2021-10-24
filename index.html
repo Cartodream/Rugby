@@ -76,16 +76,13 @@
         var BleuIcon = new LeafIcon({iconUrl: 'https://www.lerugbynistere.fr/imgs/v2/logos/logo-footer.png'}); 
 	var VertIcon = new LeafIcon({iconUrl: 'https://img2.freepng.fr/20180404/clw/kisspng-computer-icons-google-map-maker-marker-pen-cartodb-map-marker-5ac4f16f538be1.8585288315228563033422.jpg'}); 
 	
-	var grayscale   = L.tileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {attribution: '<a href="https://cartodream.wixsite.com/website-1">Cartodream</a> , <a href="https://www.openstreetmap.fr/">OSM</a>',
+	L.tileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {attribution: '<a href="https://cartodream.wixsite.com/website-1">Cartodream</a> , <a href="https://www.openstreetmap.fr/">OSM</a>',
 	
 	}).addTo(map),
 		streets  = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {attribution: '<a href="https://cartodream.wixsite.com/website-1">Cartodream</a> , <a href="https://www.openstreetmap.fr/">OSM</a>Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
 	
 	});
-	var baseLayers = {
-		"Plan": grayscale,
-		"Vue aérienne": streets
-	};
+	
 	var overlays = {
 		"1ère Journée": cities,
 		"2ème Journée": test
