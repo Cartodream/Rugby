@@ -10,47 +10,29 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 	<script type="text/javascript" src="https://cdnnen.proxi.tools/res/global/js/leaflet/Leaflet.Control.Custom.js"></script>
 <style>
-
-.location-infobox {
-    background: #fff;
-    border-radius: 2px;
-    padding: 9px 11px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 12px;
-	text-align: left;
-    line-height: 16px;
-    color: #5B5B5B;
-    width: 100%;
+.tit1 {
+	text-align : center;
+	font-weight: bold;
+	
 }
-.location-infobox .placecard__container {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+.tit2 {
+	text-align : center;
+	
+}
+.ext {
+	text-align : right;
+
 }
 
-.location-infobox .placecard__business-name {
-    font-weight: bold;
-	text-align: left;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000;
-    margin-bottom: 5px;
-}
-.leaflet-control-layers {
-	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-	background: #fff;
-	border-radius: 5px;
-	}
 </style>
 
  	
 <div id="map" style="width: 900px; height: 600px;"></div>
-<script src="sample-geojson.js" type="text/javascript"></script>
+
 
 <script>
 	let map = null;
-	let placecard = "\n                   <div class=\"placecard__left\">\n                <p class=\"placecard__business-name\">Découvrez notre commune<\/p>\n  <a class=\"placecard__direction-link\" target=\"_blank\" href=\"https:\/\/maps.google.com\/maps\/dir\/\/Mairie de Fayet-Ronaye , Fayet-Ronaye\">\n\n                   Itinéraire Google<br> <\/p>\n            ";
-  
+
 	let zoom = 6;
 	let mapType = false;
         let scale = false;
@@ -61,7 +43,7 @@
                     center: [46.66067606237861, 2.481266826386968],
                     zoom: zoom,
                     zoomControl: false,
-                    gestureHandling: true
+                    gestureHandling: false
                 });
 
 		var LeafIcon = L.Icon.extend({
@@ -70,8 +52,8 @@
 		}
 	});
 	
-	var cities = L.layerGroup();
-	var test = L.layerGroup();
+	var sais1 = L.layerGroup();
+	var sais2 = L.layerGroup();
 		
         var BleuIcon = new LeafIcon({iconUrl: 'https://www.lerugbynistere.fr/imgs/v2/logos/logo-footer.png'}); 
 	var VertIcon = new LeafIcon({iconUrl: 'https://img2.freepng.fr/20180404/clw/kisspng-computer-icons-google-map-maker-marker-pen-cartodb-map-marker-5ac4f16f538be1.8585288315228563033422.jpg'}); 
@@ -81,61 +63,76 @@
 	}).addTo(map);
 		
 	var overlays = {
-		"1ère Journée": cities,
-		"2ème Journée": test
+		"1ère Journée": sais1,
+		"2ème Journée": sais2
 	};
+	
+	L.marker([43.48186005882746, -1.53764052118868],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Biarritz - UBB </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+	L.marker([45.161865493656215, 1.5481902456476073],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> CA Brive-Corrèze - USA Perpignan </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+	L.marker([43.61095978566355, 2.2525118757337825],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Castres Olympique - Section Paloise </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+	L.marker([48.843318586086056, 2.2528728722406797],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Stade Français - Racing 92 </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
 
-	L.marker([43.48186005882746, -1.53764052118868],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("<b>Biarritz</b> 27 - 15 Union Bordeaux Bègles")
-	L.marker([45.161865493656215, 1.5481902456476073],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("<b>CA Brive-Corrèze</b> 36 - 15 USA Perpignan")
-	L.marker([43.61095978566355, 2.2525118757337825],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("<b>Castres Olympique</b> 16 - 12 Section Paloise")
-	L.marker([48.843318586086056, 2.2528728722406797],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("Stade Français 21 - 36 <b>Racing 92</b>")
-	L.marker([43.119044746273396, 5.936628939464927],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("Rugby Club Toulonnais 24 - 24 Montpellier ")
-	L.marker([45.72376638912518, 4.832118639572265],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("<b>Lyon LOU 28</b> - 19 ASM Clermont")
-	L.marker([46.15831841607795, -1.1783547604092957],{icon: BleuIcon}).addTo(cities)
-			.bindPopup("Stade Rochelais 16 - 20 <b>Stade Toulousain</b> ")
+	L.marker([43.119044746273396, 5.936628939464927],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Rugby Club Toulonnais - Montpellier </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
 
-
-	L.marker([45.78947048418224, 3.1060912702591454],{icon: BleuIcon}).addTo(test)
-			.bindPopup("ASM Clermont30 - 34 <b>Castres Olympique</b> ")
-	L.marker([43.59311160467339, 3.8495577075044656],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>Montpellier</b> 39 - 17 CA Brive-Corrèze")
-	L.marker([43.309629130739715, -0.3168874875143277],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>Section Paloise</b> 21 - 17 Lyon LOU")
-	L.marker([42.715614829455276, 2.8914971542376597],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>USA Perpignan</b> 33 - 20 Biarritz")
-	L.marker([44.82924328811207, -0.5984588064914432],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>Union Bordeaux Bègles</b> 37 - 10 Stade Français ")
-	L.marker([48.895638372235695, 2.2296890047757505],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>Racing 92 </b> 23 - 10 Stade Rochelais")
-	L.marker([43.621826788452005, 1.4156327798913195],{icon: BleuIcon}).addTo(test)
-			.bindPopup("<b>Stade Toulousain</b> 41 - 10 Rugby Club Toulonnais ");
+	L.marker([45.72376638912518, 4.832118639572265],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Lyon LOU - ASM Clermont </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+	
+	L.marker([46.15831841607795, -1.1783547604092957],{icon: BleuIcon}).addTo(sais1)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Stade Rochelais - Stade Toulousain </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
 	
 
-	    if(scale) {
-                    L.control.scale({
-                        position: 'bottomright',
-                        imperial: false
-                    }).addTo(map);
-                }
-                L.control.zoom({
-                    position: 'bottomright',
-                }).addTo(map);
-                
-                                    
-                   
-       var layertopleft = new L.control.layers(overlays,false,{position: 'topleft',collapsed:false}).addTo(map); 
+
+
+	L.marker([45.78947048418224, 3.1060912702591454],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> ASM Clermont - Castres Olympique </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+	
+	L.marker([43.59311160467339, 3.8495577075044656],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Montpellier - CA Brive-Corrèze </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+			
+	L.marker([43.309629130739715, -0.3168874875143277],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Section Paloise - Lyon LOU </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+			
+			
+	L.marker([42.715614829455276, 2.8914971542376597],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> USA Perpignan - Biarritz </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+			
+	L.marker([44.82924328811207, -0.5984588064914432],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Union Bordeaux Bègles - Stade Français </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+			
+	L.marker([48.895638372235695, 2.2296890047757505],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Racing 92 - Stade Rochelais </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+			
+	L.marker([43.621826788452005, 1.4156327798913195],{icon: BleuIcon}).addTo(sais2)
+			.bindPopup("<table><thead><tr><td colspan=\"3\" class=\"tit1\"> Stade Toulousain - Rugby Club Toulonnais </td></tr><thead><tbody><tr><td>15</td><td class=\"tit2\">Score</td> <td class=\"ext\"> 15</td></tr><td>3</td><td class=\"tit2\">Essais</td><td class=\"ext\">2</td></tr><tr><td>3</td><td class=\"tit2\">Transformations</td><td class=\"ext\">1</td></tr><tr><td>2</td><td class=\"tit2\">Pénalités</td><td class=\"ext\">1</td></tr><tr><td>0</td><td class=\"tit2\">Drops</td><td class=\"ext\">0</td></tr></tbody></table>")
+		
+	
+var layertopleft = new L.control.layers(overlays,false,{position: 'topleft',collapsed:false}).addTo(map); 
  
         let layerControlContainer = document.querySelector('.leaflet-control-layers-list');
 	let layerOverlays = document.querySelector('.leaflet-control-layers-overlays');
 	let myInsert = document.createElement('span');
 	myInsert.innerHTML = "Choisissez une journée de championnat";
-	layerControlContainer.insertBefore(myInsert, layerOverlays);  
+	layerControlContainer.insertBefore(myInsert, layerOverlays);
+	    
+	    if(scale) {
+                    L.control.scale({
+                        position: false,
+                        imperial: false
+                    }).addTo(map);
+                }
+                L.control.zoom({
+                    position: false,
+                }).addTo(map);
+                    
+                
+                                    
+                   
+         
 
       }
 
